@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.place4code.thyme.thymedemo.model.Employee;
+import com.place4code.thyme.thymedemo.entity.Employee;
+
 
 @Controller
 @RequestMapping("employees")
