@@ -1,37 +1,35 @@
 package com.place4code.thyme.thymedemo.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.place4code.thyme.thymedemo.entity.Employee;
+import com.place4code.thyme.thymedemo.service.EmployeeService;
 
 
 @Controller
 @RequestMapping("employees")
 public class EmployeeController {
-
-	private List<Employee> employees;
 	
-	@PostConstruct
-	private void fillList() {
-		employees = new ArrayList<>();
-		employees.add(new Employee(1, "Lucas", "Roma", "email"));
-		employees.add(new Employee(2, "Claudia", "Roma", "emailClaudia"));
-		employees.add(new Employee(3, "Khalessi", "Roma", "emailKhaleesi"));
+	private EmployeeService employeeService;
+	
+	// !!! Constructor injection - @Autowired is optional
+	@Autowired
+	public EmployeeController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
 	}
-	
+
+
+
 	@GetMapping("/list")
 	public String listEmployees(Model model) {
 		
-		model.addAttribute("employees", employees);
+		//employees from database -> findAll()
+		model.addAttribute("employees", employeeService.findAll());
 		
+		//return view with list of employees
 		return "list-employees";
 		
 	}
