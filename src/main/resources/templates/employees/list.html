@@ -22,13 +22,13 @@
     
     <div class="col-lg-8">
 
-	    <div class="jumbotron p-4">
-	  		<h1 class="display-4">Hello!</h1>
+	    <div class="jumbotron p-4" style="border-radius:0 0 12px 12px;">
+	  		<h1 class="display-4">Hi!</h1>
 	  		<p class="lead">Spring Boot and Thymeleaf - CRUD database project</p>
 	  		<hr class="my-4">
 		</div>
 		
-      	<h1 class="display-4 p-3"><i class="fas fa-users text-muted"></i> Employees:</h1>
+      	<h1 class="display-4 p-3 text-muted"><i class="fas fa-users"></i> Employees:</h1>
   
 		<table class="table">
 		  <thead class="thead-dark">
@@ -44,18 +44,16 @@
 		      <td th:text="${employee.firstName}"></td>
 		      <td th:text="${employee.lastName}"></td>
 		      <td th:text="${employee.email}"></td>
-		      <td>
-		      	<div class="btn-group" role="group" aria-label="Basic example">
-		  			<button type="button" class="btn btn-sm btn-secondary"><i class="far fa-edit"></i></button>
-		  			<button type="button" class="btn btn-sm btn-secondary"><i class="far fa-trash-alt"></i></button>
-				</div>
+		      <td class="text-right">
+			      <a class="btn btn-sm btn-outline-primary" th:href="@{/employees/updateEmployee(id=${employee.id})}" role="button"><i class="far fa-edit"></i> update</a>
+			      <a class="btn btn-sm btn-outline-danger" th:href="@{showAddForm}" role="button"><i class="far fa-trash-alt"></i> delete</a>
 		      </td>
 		    </tr>
 		  </tbody>
 		</table>
 		
 		<hr class="my-4">
-		<a class="btn btn-success" th:href="@{showAddForm}" role="button"><i class="fas fa-user-plus"></i> employee</a>
+		<a class="btn btn-success" th:href="@{showForm}" role="button"><i class="fas fa-user-plus"></i> employee</a>
 		
     </div>
     

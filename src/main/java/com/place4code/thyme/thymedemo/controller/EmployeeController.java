@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.place4code.thyme.thymedemo.entity.Employee;
 import com.place4code.thyme.thymedemo.service.EmployeeService;
@@ -37,8 +38,8 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/showAddForm")
-	public String showAddForm(Model model) {
+	@GetMapping("/showForm")
+	public String showForm(Model model) {
 		
 		//add attribute
 		model.addAttribute("employee", new Employee());
@@ -56,6 +57,17 @@ public class EmployeeController {
 		//redirect to list
 		return "redirect:/employees/list";
 		
+	}
+	
+	//mapping for buttons with "update", get employee and than return view with employee from db
+	@GetMapping("/updateEmployee")
+	public String updateEmployee(@RequestParam("id") int id, Model model) {
+		
+		//find employee and add to model
+		model.addAttribute("employee", employeeService.findById(id));
+		
+		//return view for update
+		return "employees/save";
 	}
 	
 	

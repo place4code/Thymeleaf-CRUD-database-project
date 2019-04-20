@@ -17,48 +17,47 @@
 <div class="container">
   <div class="row">
   
-    <div class="col-lg-2">
+    <div class="col-lg-3">
     </div>
     
-    <div class="col-lg-8">
+    <div class="col-lg-6">
 
-	    <div class="jumbotron p-4">
-	  		<h1 class="display-4">Save employee</h1>
-	  		
-	  		<hr class="my-4">
-		</div>
+	    
 		
-      	<h1 class="display-4 p-3"><i class="fas fa-users text-muted"></i> Employees:</h1>
+      	<h1 class="display-4 p-3 text-muted"><i class="far fa-edit"></i> employee:</h1>
   
 		<form action="#" th:action="@{/employees/save}" th:object="${employee}" method="POST">
+		
+		<!-- required for updates -->
+		<input type="hidden" th:field="*{id}"/>
 		
 		  <div class="form-group">
 		    <label for="fn">First name</label>
 		    <input type="text" th:field="*{firstName}" class="form-control" id="fn" aria-describedby="first_name" placeholder="Enter first name">
-		    <small id="fnHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		    <!-- <small id="fnHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="ln">First name</label>
 		    <input type="text" th:field="*{lastName}" class="form-control" id="ln" aria-describedby="last_name" placeholder="Enter last name">
-		    <small id="lnHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		    <!-- <small id="lnHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email address</label>
 		    <input type="email" th:field="*{email}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 		  </div>
 		  
 		  <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save</button>
 		</form>
 		
 		<hr class="my-4">
-		<a class="btn btn-success" href="#" role="button"><i class="fas fa-user-plus"></i> employee</a>
+		<a class="btn btn-sm btn-outline-secondary" th:href="@{/employees/list}" role="button"><i class="fas fa-arrow-left"></i> back to list</a>
 		
     </div>
     
-    <div class="col-lg-2">
+    <div class="col-lg-3">
     </div>
     
   </div>
