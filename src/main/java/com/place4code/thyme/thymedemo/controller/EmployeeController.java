@@ -70,5 +70,17 @@ public class EmployeeController {
 		return "employees/save";
 	}
 	
+	//mapping for delete action
+	@GetMapping("/deleteEmployee")
+	public String deleteEmployee(@RequestParam("id") int id) {
+		
+		//delete from database by id
+		employeeService.deleteById(id);
+		
+		//return view for update
+		return "redirect:/employees/list";
+	}
+	
+	
 	
 }

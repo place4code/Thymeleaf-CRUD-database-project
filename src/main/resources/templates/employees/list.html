@@ -46,7 +46,7 @@
 		      <td th:text="${employee.email}"></td>
 		      <td class="text-right">
 			      <a class="btn btn-sm btn-outline-primary" th:href="@{/employees/updateEmployee(id=${employee.id})}" role="button"><i class="far fa-edit"></i> update</a>
-			      <a class="btn btn-sm btn-outline-danger" th:href="@{showAddForm}" role="button"><i class="far fa-trash-alt"></i> delete</a>
+			      <a class="btn btn-sm btn-outline-danger" th:href="@{/employees/deleteEmployee(id=${employee.id})}" role="button"><i class="far fa-trash-alt"></i> delete</a>
 		      </td>
 		    </tr>
 		  </tbody>
